@@ -5,7 +5,6 @@ import (
 	"flag"
 	"os"
 	"log"
-	"strings"
 )
 
 type CLI struct {
@@ -57,7 +56,7 @@ func (cli *CLI) Run()  {
 	addBlockCmd := flag.NewFlagSet("addblock", flag.ExitOnError)
 	visitBlockChainCmd := flag.NewFlagSet("visitblockchain", flag.ExitOnError)
 
-	addBlockWithData := addBlockCmd.String("data", strings.Join(os.Args[2:], ""), "区块的数据")
+	addBlockWithData := addBlockCmd.String("data", "", "区块的数据")
 	switch os.Args[1] {
 	case "creatblockchain":
 		err := creatBlockChainCmd.Parse(os.Args[2:])
