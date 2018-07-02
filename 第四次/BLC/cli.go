@@ -6,7 +6,6 @@ import (
 	"os"
 	"log"
 	"strconv"
-	"strings"
 )
 
 type CLI struct {
@@ -15,7 +14,7 @@ type CLI struct {
 
 func PrintfUsage()  {
 	fmt.Println("Usage:")
-	fmt.Println("  creatblockchain -address ADDRESS -tokens VALUE-- 创建包含创世区块的区块链并可以选择设定初始token ./main creatblockchain pang")
+	fmt.Println("  creatblockchain -address ADDRESS -tokens VALUE-- 创建包含创世区块的区块链并可以选择设定初始token ./main creatblockchain -address pang -tokens 101")
 	//fmt.Println("  addblock -data -- 添加区块到区块链")
 	fmt.Println("  send -from From -to To -amount AMOUNT -- 交易明细./main send -from '[\"pang\"]' -to '[\"lisi\"]' -amount '[\"2.5\"]")
 	fmt.Println("  getbalance -address -- 获取区块信息")
@@ -81,8 +80,8 @@ func (cli *CLI) Run()  {
 	getbalanceCmd := flag.NewFlagSet("getBalance", flag.ExitOnError)
 
 
-	creatBlockChainAddress := creatBlockChainCmd.String("address",  strings.Join(os.Args[2:], ""), "创建创世区块地址")
-	creatBlockTokens := creatBlockChainCmd.String("tokens",  "100", "设定tokens")
+	creatBlockChainAddress := creatBlockChainCmd.String("address",  "", "创建创世区块地址")
+	creatBlockTokens := creatBlockChainCmd.String("tokens",  "", "设定tokens")
 
 	//	$ ./main send -from '["pang"]' -to '["lisi"]' -amount '["2.5"]'
 	flagFrom := sendBlockCmd.String("from","","转账源地址......")
