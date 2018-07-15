@@ -56,9 +56,7 @@ func (pow *PHBProofOfWork) PHBRun() (int, []byte) {
 		data := pow.PHBprepareData(nonce)
 
 		hash = sha256.Sum256(data)
-		if math.Remainder(float64(nonce), 100000) == 0 {
-			fmt.Printf("\r%x", hash)
-		}
+		fmt.Printf("\r%x", hash)
 		hashInt.SetBytes(hash[:])
 
 		if hashInt.Cmp(pow.phbtarget) == -1 {

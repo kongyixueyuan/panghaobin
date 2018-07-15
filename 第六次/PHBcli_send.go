@@ -37,3 +37,4 @@ func (cli *PHBCLI) phbsend(from, to string, amount int, nodeID string, mineNow b
 
 	fmt.Println("Success!")
 }
+
